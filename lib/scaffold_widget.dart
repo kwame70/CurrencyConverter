@@ -12,6 +12,14 @@ class _MyScaffoldState extends State<MyScaffold> {
   double results = 0;
   final TextEditingController amountController = TextEditingController();
   final TextEditingController rateController = TextEditingController();
+
+  void cal() {
+    results =
+        double.parse(amountController.text) * double.parse(rateController.text);
+    amountController.clear();
+    rateController.clear();
+  }
+
   @override
   void dispose() {
     amountController.dispose();
@@ -69,12 +77,7 @@ class _MyScaffoldState extends State<MyScaffold> {
               ),
               onPressed: () {
                 setState(() {
-                  results = double.parse(amountController.text) *
-                      double.parse(rateController.text);
-                  MyTextField(
-                      hintText: "Enter amount", controller: amountController);
-                  MyTextField(
-                      hintText: "Enter rate", controller: rateController);
+                  cal();
                 });
               },
               child: const Padding(

@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 
-class MyTextField extends StatelessWidget {
+class MyTextField extends StatefulWidget {
   const MyTextField(
       {super.key, required this.hintText, required this.controller});
 
   final String hintText;
   final TextEditingController controller;
 
+  @override
+  State<MyTextField> createState() => _MyTextFieldState();
+}
+
+class _MyTextFieldState extends State<MyTextField> {
   @override
   Widget build(BuildContext context) {
     const border = OutlineInputBorder(
@@ -16,12 +21,12 @@ class MyTextField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TextField(
-        controller: controller,
+        controller: widget.controller,
         style: const TextStyle(
           color: Colors.black,
         ),
         decoration: InputDecoration(
-          hintText: hintText,
+          hintText: widget.hintText,
           hintStyle: const TextStyle(color: Colors.black),
           filled: true,
           fillColor: Colors.white,
